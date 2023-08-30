@@ -58,20 +58,6 @@ export default class Api {
     });
   }
 
-  setLike(id) {
-    return this._req(`${this._url}/cards/${id}/likes `, {
-      headers: this._headers,
-      method: "PUT",
-    });
-  }
-
-  deleteLike(id) {
-    return this._req(`${this._url}/cards/${id}/likes `, {
-      headers: this._headers,
-      method: "DELETE",
-    });
-  }
-
   setAvatar(data) {
     return this._req(`${this._url}/users/me/avatar`, {
       headers: this._headers,
@@ -80,6 +66,20 @@ export default class Api {
         avatar: data.avatar,
       }),
     });
+  }
+
+  changeLikeCardStatus(id, isLiked) {
+    if (isLiked) {
+      return this._req(`${this._url}/cards/${id}/likes `, {
+        headers: this._headers,
+        method: "PUT",
+      });
+    } else {
+      return this._req(`${this._url}/cards/${id}/likes `, {
+        headers: this._headers,
+        method: "DELETE",
+      });
+    }
   }
 }
 export const api = new Api({

@@ -6,6 +6,7 @@ export default function PopupWithForm({
   children,
   isOpen,
   onClose,
+  onSubmit,
 }) {
   return (
     <div className={`popup popup_${name} ${isOpen ? "popup_opened" : ""}`}>
@@ -19,6 +20,7 @@ export default function PopupWithForm({
         </button>
         <h2 className="popup__title">{title}</h2>
         <form
+          onSubmit={onSubmit}
           className={`popup__form-${name} popup__form`}
           name={name}
           autoComplete="true"
